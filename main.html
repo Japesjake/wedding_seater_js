@@ -1,11 +1,13 @@
 <html>
 <body>
 <form>
-   <script type="module" src="./main.js"></script>
+   <script type="module" src="./main.js">
+      var ui = new Ui()
+   </script>
       <input type="text" placeholder = "name">
       <input type="text" placeholder = "age">
       <input type="text" placeholder = "spouse"><br><br>
-      <input type="button" value="Add Person" onClick='ui.addInput()'>
+      <input type="button" value="Add Person" onClick='ui.test()'>
  </form>
  </body>
  </html>
