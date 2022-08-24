@@ -9,4 +9,11 @@ export class Ui {
     removeInput(btn){
         btn.parentNode.remove()
     }
+    test_ui () {
+        console.log('ui imports')
+    }
+}
+
+export function test1() {
+    console.log('function imports')
 }

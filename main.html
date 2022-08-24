@@ -1,13 +1,18 @@
 <html>
 <body>
 <form>
-   <script type="module" src="./main.js">
+   <script type="module" src="./objects/Ui.js">
+      import {test1} from "./objects/Ui.js"
+      import {Ui} from "./objects/Ui.js"
+   </script>
+   <script>
       var ui = new Ui()
+      ui.test_ui()
    </script>
       <input type="text" placeholder = "name">
       <input type="text" placeholder = "age">
       <input type="text" placeholder = "spouse"><br><br>
-      <input type="button" value="Add Person" onClick='ui.test()'>
+      <input type="button" value="Add Person" onClick="test1()">
  </form>
  </body>
  </html>
