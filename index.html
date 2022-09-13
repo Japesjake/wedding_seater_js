@@ -1,12 +1,11 @@
+<!DOCTYPE html>
 <html>
 <body>
 <form>
-   <script type="module" src="./objects/Ui.js">
-      import {test1} from "./objects/Ui.js"
-      import {Ui} from "./objects/Ui.js"
-   </script>
-   <script>
-      var ui = new Ui()
+   <script type="module">
+      import {test1, Ui} from "./src/modules/Ui.js"
+			window.test1 = test1
+      const ui = new Ui()
       ui.test_ui()
    </script>
       <input type="text" placeholder = "name">
