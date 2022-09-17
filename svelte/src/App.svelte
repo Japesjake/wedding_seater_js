@@ -1,17 +1,16 @@
 <script>
 	let people = [{firstName: "Sarah", lastName: "Showalter", isTaken: true},
-				  {firstName: "James", lastName: "Showalter", isTaken: true}
+				  {firstName: "James", lastName: "Showalter", isTaken: true},
 				  ];
-	$: function addInput(people) {
-		console.log("works")
-		people.push({})
-		people = people;
+	function addInput () {
+		console.log("addInput runs.");
+		people.push({});
 	}
 </script>
 
 <main>
 	<h1>Wedding Seater</h1>
-	<form>
+	<!-- <form> -->
 		{#each people as person, i}
 			<input type="text" placeholder="firstname">
 			<input type="text" placeholder="lastname">
@@ -21,7 +20,7 @@
 				<button onclick="addInput()">+</button><br>
 			{/if}
 		{/each}
-	</form>
+	<!-- </form> -->
 </main>
 
 <style>
