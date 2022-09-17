@@ -1,35 +1,34 @@
 <script>
-	let people = [{firstName: "Sarah", lastName: "Showalter", isTaken: true},
-				  {firstName: "James", lastName: "Showalter", isTaken: true},
+	let people = [{id: Math.random(), firstName: "Sarah", lastName: "Showalter", isTaken: true},
+				  {id: Math.random(), firstName: "James", lastName: "Showalter", isTaken: true},
 				  ];
 	function addInput () {
-		console.log("addInput runs.");
-		people.push({});
+		console.log("addInput runs")
+		people.push({id: Math.random()});
 		people = people;
+		console.log(people)
 	}
-	function removeInput (i) {
-		console.log("removeInput runs.")
+	function removeInput (id) {
+		console.log("removeInput runs")
 		if (people.length > 1) {
-			people.splice(0,1)
+			people.splice(id,1)
 			people = people;
+			console.log(people)
 		}
 	}
 </script>
 
 <main>
 	<h1>Wedding Seater</h1>
-	<!-- <form> -->
-		{#each people as person, i}
+		{#each people as person, id (person.id)}
 			<input type="text" placeholder="firstname">
 			<input type="text" placeholder="lastname">
-			{#if i < people.length - 1}
-				<br>
+			{#if id < people.length - 1}
+				<button on:click={removeInput(id)}>-</button><br>
 			{:else}
-				<button on:click={removeInput}>-</button>
 				<button on:click={addInput}>+</button><br>
 			{/if}
 		{/each}
-	<!-- </form> -->
 </main>
 
 <style>
