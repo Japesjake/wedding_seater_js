@@ -7,6 +7,13 @@
 		people.push({});
 		people = people;
 	}
+	function removeInput (i) {
+		console.log("removeInput runs.")
+		if (people.length > 1) {
+			people.splice(0,1)
+			people = people;
+		}
+	}
 </script>
 
 <main>
@@ -18,6 +25,7 @@
 			{#if i < people.length - 1}
 				<br>
 			{:else}
+				<button on:click={removeInput}>-</button>
 				<button on:click={addInput}>+</button><br>
 			{/if}
 		{/each}
