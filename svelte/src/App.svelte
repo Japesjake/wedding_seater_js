@@ -5,6 +5,7 @@
 	function addInput () {
 		console.log("addInput runs.");
 		people.push({});
+		people = people;
 	}
 </script>
 
@@ -17,7 +18,7 @@
 			{#if i < people.length - 1}
 				<br>
 			{:else}
-				<button onclick="addInput()">+</button><br>
+				<button on:click={addInput}>+</button><br>
 			{/if}
 		{/each}
 	<!-- </form> -->
