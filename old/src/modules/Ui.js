@@ -3,7 +3,7 @@ export class Ui {
         console.log('thing')
     }
     addInput () {
-        var newdiv = document.createElement('div')
+        let newdiv = document.createElement('div')
         newdiv.innterHTML = "<input type='text' name='myInputs[]'> <input type='button' value='-' onClick='removeInput(this);'>";
     }
     removeInput(btn){
