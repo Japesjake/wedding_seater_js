@@ -1,19 +1,16 @@
 <script>
 	let people = [{id: Math.random(), firstName: "Sarah", lastName: "Showalter", isTaken: true},
-				  {id: Math.random(), firstName: "James", lastName: "Showalter", isTaken: true},
+				  {id: Math.random(), firstName: "James", lastName: "Showalter", isTaken: true}
 				  ];
+	people = people;
 	function addInput () {
-		console.log("addInput runs")
 		people.push({id: Math.random()});
 		people = people;
-		console.log(people)
 	}
 	function removeInput (id) {
-		console.log("removeInput runs")
 		if (people.length > 1) {
 			people.splice(id,1)
 			people = people;
-			console.log(people)
 		}
 	}
 </script>
@@ -21,13 +18,12 @@
 <main>
 	<h1>Wedding Seater</h1>
 		{#each people as person, id (person.id)}
+			<button on:click={removeInput(id)}>-</button>
 			<input type="text" placeholder="firstname">
-			<input type="text" placeholder="lastname">
-			{#if id < people.length - 1}
-				<button on:click={removeInput(id)}>-</button><br>
-			{:else}
-				<button on:click={addInput}>+</button><br>
-			{/if}
+			<input type="text" placeholder="lastname"><br>
+		{#if id === people.length - 1}
+			<button on:click={addInput}>+</button>
+		{/if}
 		{/each}
 </main>
 
