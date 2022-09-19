@@ -2,8 +2,8 @@
     // import { loop_guard } from "svelte/internal";
 
 
-	let people = [{id: Math.random(), firstName: "Sarah", lastName: "Showalter", hasSO: false},
-				  {id: Math.random(), firstName: "James", lastName: "Showalter", hasSO: false}
+	let people = [{id: Math.random(), firstName: "Lucas", lastName: "Redlawski", hasSO: false, SO: ""},
+				  {id: Math.random(), firstName: "James", lastName: "Showalter", hasSO: false, SO: ""}
 				  ];
 	function addInput () {
 		people.push({id: Math.random()});
@@ -30,7 +30,9 @@
 			has SO?
 			<input type="checkbox" on:click="{toggleSO(person)}"><br>
 		{#if person.hasSO}
-			has SO<br>
+			Who?
+			<input type="text" placeholder="firstname">
+			<input type="text" placeholder="lastname"><br>
 		{/if}
 		{#if id === people.length - 1}
 			<button on:click={addInput}>+</button>
