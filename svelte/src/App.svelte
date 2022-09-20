@@ -1,12 +1,10 @@
 <script>
-    // import { loop_guard } from "svelte/internal";
-
-
+	import {store} from './store'
 	let people = [{id: Math.random(), firstName: "Lucas", lastName: "Redlawski", hasSO: false, SO: ""},
 				  {id: Math.random(), firstName: "James", lastName: "Showalter", hasSO: false, SO: ""}
 				  ];
 	function addInput () {
-		people.push({id: Math.random()});
+		people.push({id: Math.random(), firstName: null, lastName: null});
 		people = people;
 	}
 	function removeInput (id) {
@@ -25,8 +23,8 @@
 	<h1>Wedding Seater</h1>
 		{#each people as person, id (person.id)}
 			<button on:click={removeInput(id)}>-</button>
-			<input type="text" placeholder="firstname">
-			<input type="text" placeholder="lastname">
+			<input type="text" placeholder="firstname" value={person.firstName}>
+			<input type="text" placeholder="lastname" value={person.lastName}>
 			has SO?
 			<input type="checkbox" on:click="{toggleSO(person)}"><br>
 		{#if person.hasSO}
