@@ -5,4 +5,4 @@ const people = [{id: Math.random(), firstName: "Lucas", lastName: "Redlawski", h
                        {id: Math.random(), firstName: "James", lastName: "Showalter", hasSO: false, SO: ""}
                       ];
 
-export const store = persistStore('people', people)
+export const peopleData = persistStore('people', people)

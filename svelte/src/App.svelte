@@ -1,5 +1,7 @@
 <script>
-	import {store} from './store'
+	localStorage.clear()
+	import {peopleData} from './store'
+	console.log(peopleData)
 	let people = [{id: Math.random(), firstName: "Lucas", lastName: "Redlawski", hasSO: false, SO: ""},
 				  {id: Math.random(), firstName: "James", lastName: "Showalter", hasSO: false, SO: ""}
 				  ];
@@ -8,6 +10,7 @@
 		people = people;
 	}
 	function removeInput (id) {
+		console.log(people)
 		if (people.length > 1) {
 			people.splice(id,1)
 			people = people;
@@ -15,13 +18,13 @@
 	}
 	function toggleSO (person){
 		person.hasSO = !person.hasSO
-		people = people;
+		people = people; 
 	}
 </script>
 
 <main>
 	<h1>Wedding Seater</h1>
-		{#each people as person, id (person.id)}
+		{#each peopleData as person, id (person.id)}
 			<button on:click={removeInput(id)}>-</button>
 			<input type="text" placeholder="firstname" value={person.firstName}>
 			<input type="text" placeholder="lastname" value={person.lastName}>
@@ -32,7 +35,7 @@
 			<input type="text" placeholder="firstname">
 			<input type="text" placeholder="lastname"><br>
 		{/if}
-		{#if id === people.length - 1}
+		{#if id === peopleData.length - 1}
 			<button on:click={addInput}>+</button>
 		{/if}
 		{/each}
