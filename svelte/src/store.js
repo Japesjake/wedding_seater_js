@@ -1,8 +1,4 @@
+import { writable } from "svelte/store"
 
-import {persistStore} from './persistStore'
-
-const people = [{id: Math.random(), firstName: "Lucas", lastName: "Redlawski", hasSO: true, SO: ""},
-                       {id: Math.random(), firstName: "James", lastName: "Showalter", hasSO: false, SO: ""}
-                      ];
-
-export const peopleData = persistStore('people', people)
+export const peopleData = writable(localStorage.getItem("userName") || "Default Value")
+peopleData.subscribe((val) => localStorage.setItem("userName", val))

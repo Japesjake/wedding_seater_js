@@ -1,30 +1,31 @@
 <script>
-	localStorage.clear()
 	import {peopleData} from './store'
+	console.log(peopleData.length)
 	console.log(peopleData)
 	let people = [{id: Math.random(), firstName: "Lucas", lastName: "Redlawski", hasSO: false, SO: ""},
 				  {id: Math.random(), firstName: "James", lastName: "Showalter", hasSO: false, SO: ""}
 				  ];
 	function addInput () {
-		people.push({id: Math.random(), firstName: null, lastName: null});
+		peopleData.push({id: Math.random(), firstName: null, lastName: null});
 		people = people;
 	}
 	function removeInput (id) {
-		console.log(people)
-		if (people.length > 1) {
-			people.splice(id,1)
+		console.log(peopleData)
+		if (peopleData.length > 1) {
+			peopleData.splice(id,1)
 			people = people;
 		}
 	}
 	function toggleSO (person){
 		person.hasSO = !person.hasSO
-		people = people; 
+		people = people;
 	}
+	// peopleData = {id; 123235234, lastName: "Showalter", firstName: "James", hasSO: false, SO: ""}
 </script>
 
 <main>
 	<h1>Wedding Seater</h1>
-		{#each peopleData as person, id (person.id)}
+		{#each $peopleData as person, id (person.id)}
 			<button on:click={removeInput(id)}>-</button>
 			<input type="text" placeholder="firstname" value={person.firstName}>
 			<input type="text" placeholder="lastname" value={person.lastName}>
