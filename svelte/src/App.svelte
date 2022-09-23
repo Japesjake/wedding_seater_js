@@ -1,31 +1,32 @@
 <script>
-	import {peopleData} from './store'
-	console.log(peopleData.length)
-	console.log(peopleData)
-	let people = [{id: Math.random(), firstName: "Lucas", lastName: "Redlawski", hasSO: false, SO: ""},
-				  {id: Math.random(), firstName: "James", lastName: "Showalter", hasSO: false, SO: ""}
-				  ];
+	import {peopleImport} from './store'
+	let people = peopleImport;
+	for (let person in people) {
+		console.log(person.name)
+	}
 	function addInput () {
-		peopleData.push({id: Math.random(), firstName: null, lastName: null});
-		people = people;
+		console.log("add func")
+		people.push({id: Math.random(), firstName: null, lastName: null});
+		// people = people;
 	}
 	function removeInput (id) {
-		console.log(peopleData)
-		if (peopleData.length > 1) {
-			peopleData.splice(id,1)
-			people = people;
+		console.log("Remove Func")
+		if (people.length > 1) {
+			people.splice(id,1)
+			// people = people;
 		}
 	}
 	function toggleSO (person){
+		console.log("toggle Func")
 		person.hasSO = !person.hasSO
-		people = people;
+		// people = people;
 	}
-	// peopleData = {id; 123235234, lastName: "Showalter", firstName: "James", hasSO: false, SO: ""}
 </script>
 
 <main>
 	<h1>Wedding Seater</h1>
-		{#each $peopleData as person, id (person.id)}
+		{people}
+		{#each people as person, id}
 			<button on:click={removeInput(id)}>-</button>
 			<input type="text" placeholder="firstname" value={person.firstName}>
 			<input type="text" placeholder="lastname" value={person.lastName}>
@@ -36,7 +37,7 @@
 			<input type="text" placeholder="firstname">
 			<input type="text" placeholder="lastname"><br>
 		{/if}
-		{#if id === peopleData.length - 1}
+		{#if id === people.length - 1}
 			<button on:click={addInput}>+</button>
 		{/if}
 		{/each}

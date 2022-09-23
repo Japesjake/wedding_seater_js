@@ -1,4 +1,6 @@
-import { writable } from "svelte/store"
-
-export const peopleData = writable(localStorage.getItem("userName") || "Default Value")
-peopleData.subscribe((val) => localStorage.setItem("userName", val))
+import { writable } from 'svelte/store'
+const defaultPeople = [{id: Math.random(), firstName: "Lucas", lastName: "Redlawski", hasSO: false, SO: ""},
+                    {id: Math.random(), firstName: "James", lastName: "Showalter", hasSO: false, SO: ""}
+                    ];
+export const peopleImport = writable(JSON.stringify(defaultPeople))
+peopleImport.subscribe((value) => localStorage.defaultPeople = JSON.parse(value))
