@@ -1,8 +1,6 @@
 <script>
 	import { people } from './store'
-	for (let person in people) {
-		console.log(person.firstName)
-	}
+
 	function addInput () {
 		console.log("add func")
 		people.push({id: Math.random(), firstName: null, lastName: null});
@@ -12,6 +10,7 @@
 		console.log("Remove Func")
 		if (people.length > 1) {
 			people.splice(id,1)
+			console.log(people)
 			// people = people;
 		}
 	}
@@ -24,7 +23,7 @@
 
 <main>
 	<h1>Wedding Seater</h1>
-		{#each people as person, id (person.id)}
+		{#each $people as person, id (id)}
 			<button on:click={removeInput(id)}>-</button>
 			<input type="text" placeholder="firstname" value={person.firstName}>
 			<input type="text" placeholder="lastname" value={person.lastName}>
@@ -35,7 +34,7 @@
 			<input type="text" placeholder="firstname">
 			<input type="text" placeholder="lastname"><br>
 		{/if}
-		{#if id === people.length - 1}
+		{#if id === $people.length - 1}
 			<button on:click={addInput}>+</button>
 		{/if}
 		{/each}
