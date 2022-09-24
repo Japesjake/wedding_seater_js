@@ -1,8 +1,7 @@
 <script>
-	import {peopleImport} from './store'
-	let people = peopleImport;
+	import { people } from './store'
 	for (let person in people) {
-		console.log(person.name)
+		console.log(person.firstName)
 	}
 	function addInput () {
 		console.log("add func")
@@ -25,8 +24,7 @@
 
 <main>
 	<h1>Wedding Seater</h1>
-		{people}
-		{#each people as person, id}
+		{#each people as person, id (person.id)}
 			<button on:click={removeInput(id)}>-</button>
 			<input type="text" placeholder="firstname" value={person.firstName}>
 			<input type="text" placeholder="lastname" value={person.lastName}>

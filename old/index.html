@@ -8,6 +8,9 @@
          window.name = "JP"
       const ui = new Ui()
       ui.test_ui()
+      let json = JSON.stringify({this:"this"})
+      let thing = JSON.parse(json)
+      console.log(thing)
    </script>
       <input type="text" placeholder = "name">
       <input type="button" value="Add Person" onClick="test1()">
