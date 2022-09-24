@@ -3,33 +3,32 @@
 
 	function addInput () {
 		console.log("add func")
-		people.push({id: Math.random(), firstName: null, lastName: null});
-		// people = people;
+		$people.push({id: Math.random(), firstName: null, lastName: null});
+		$people = $people;
 	}
 	function removeInput (id) {
 		console.log("Remove Func")
-		if (people.length > 1) {
-			people.splice(id,1)
-			console.log(people)
-			// people = people;
+		if ($people.length > 1) {
+			$people.splice(id,1)
+			$people = $people;
 		}
 	}
 	function toggleSO (person){
 		console.log("toggle Func")
 		person.hasSO = !person.hasSO
-		// people = people;
+		$people = $people;
 	}
 </script>
 
 <main>
 	<h1>Wedding Seater</h1>
-		{#each $people as person, id (id)}
+		{#each $people as $person, id ($person.id)}
 			<button on:click={removeInput(id)}>-</button>
-			<input type="text" placeholder="firstname" value={person.firstName}>
-			<input type="text" placeholder="lastname" value={person.lastName}>
+			<input type="text" placeholder="firstname" bind:value={$person.firstName}>
+			<input type="text" placeholder="lastname" bind:value={$person.lastName}>
 			has SO?
-			<input type="checkbox" on:click="{toggleSO(person)}"><br>
-		{#if person.hasSO}
+			<input type="checkbox" on:click="{toggleSO($person)}"><br>
+		{#if $person.hasSO}
 			Who?
 			<input type="text" placeholder="firstname">
 			<input type="text" placeholder="lastname"><br>
