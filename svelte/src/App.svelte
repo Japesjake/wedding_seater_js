@@ -1,9 +1,10 @@
 <script>
-	import { people } from './store'
+	import { people } from './store.js'
+	import { runSeater } from './run.js' 
 
 	function addInput () {
 		console.log("add func")
-		$people.push({id: Math.random(), firstName: null, lastName: null});
+		$people.push({id: Math.random(), firstName: null, lastName: null, hasSO: false, SO: {firstName: null, lastName: null}});
 		$people = $people;
 	}
 	function removeInput (id) {
@@ -27,11 +28,11 @@
 			<input type="text" placeholder="firstname" bind:value={$person.firstName}>
 			<input type="text" placeholder="lastname" bind:value={$person.lastName}>
 			has SO?
-			<input type="checkbox" on:click="{toggleSO($person)}"><br>
+			<input type="checkbox" on:click="{toggleSO($person)}" checked={$person.hasSO}><br>
 		{#if $person.hasSO}
 			Who?
-			<input type="text" placeholder="firstname">
-			<input type="text" placeholder="lastname"><br>
+			<input type="text" placeholder="firstname" bind:value={$person.SO.firstName}>
+			<input type="text" placeholder="lastname" bind:value={$person.SO.lastName}><br>
 		{/if}
 		{#if id === $people.length - 1}
 			<button on:click={addInput}>+</button>
