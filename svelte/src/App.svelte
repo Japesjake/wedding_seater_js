@@ -23,6 +23,11 @@
 
 <main>
 	<h1>Wedding Seater</h1>
+		<input type="number" placeholder="max">
+		<input type="number" placeholder="min">
+
+		per table
+		<br>
 		{#each $people as $person, id ($person.id)}
 			<button on:click={removeInput(id)}>-</button>
 			<input type="text" placeholder="firstname" bind:value={$person.firstName}>
@@ -55,13 +60,17 @@
 		font-weight: 100;
 	}
 
-	input {
+	input[type = "text"]{
 		text-align: left;
 		width: 8em;
 	}
 
 	input[type="checkbox"] {
 		width: 1em;
+	}
+
+	input[type="number"] {
+		width: 4em
 	}
 
 	@media (min-width: 640px) {
