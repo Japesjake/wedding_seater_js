@@ -1,20 +1,26 @@
 import { writable } from 'svelte/store'
 
-function returnStored (key, defaultValue) {
+function store (key, defaultValue) {
     if (!localStorage.getItem(key)) {
-        return defaultValue
+        let value = defaultValue
     }else{
-        return JSON.parse(localStorage.getItem(key))
+        let value = JSON.parse(localStorage.getItem(key))
     }
+    const write = writable(value)
+    return write
 }
 
-let defaultArray = [{id: Math.random(), firstName: "Lucas", lastName: "Redlawski", hasSO: false, SO: {}},
-                    {id: Math.random(), firstName: "James", lastName: "Showalter", hasSO: false, SO: {}}];
-let defaultPeople = returnStored('people', defaultArray)
-export const people = writable(defaultPeople)
+defaultValue = [{id: Math.random(), firstName: "Lucas", lastName: "Redlawski", hasSO: false, SO: {}},
+                {id: Math.random(), firstName: "James", lastName: "Showalter", hasSO: false, SO: {}}];
+export const people = store("people", defaultValue)
 people.subscribe((value) => localStorage.people = JSON.stringify((value)))
+// let defaultArray = [{id: Math.random(), firstName: "Lucas", lastName: "Redlawski", hasSO: false, SO: {}},
+//                     {id: Math.random(), firstName: "James", lastName: "Showalter", hasSO: false, SO: {}}];
+// let defaultPeople = returnStored('people', defaultArray)
+// export const people = writable(defaultPeople)
+// 
 
-let defaultValue = ""
-let defaultNum = returnStored('max', defaultValue)
-export const max = writable(defaultNum)
-max.subscribe((value) => localStorage.max = JSON.stringify((value)))
+// let defaultValue = ""
+// let defaultNum = returnStored('max', defaultValue)
+// export const max = writable(defaultNum)
+// max.subscribe((value) => localStorage.max = JSON.stringify((value)))
