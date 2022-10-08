@@ -1,5 +1,5 @@
 <script>
-	import { people } from './store.js'
+	import { people, max, min} from './store.js'
 	import { runSeater } from './run.js' 
 
 	function addInput () {
@@ -23,8 +23,8 @@
 
 <main>
 	<h1>Wedding Seater</h1>
-		<input type="number" placeholder="max">
-		<input type="number" placeholder="min">
+		<input type="number" placeholder="max" bind:value={$max}>
+		<input type="number" placeholder="min" bind:value={$min}>
 
 		per table
 		<br>
