@@ -1,33 +1,33 @@
 <script>
 	import { people, max, min} from './store.js'
-	import { runSeater } from './run.js' 
+	import { makeTables, update } from './update.js'
+
+	$: $people, update($people);
+	$: makeTables($max, $min);
 
 	function addInput () {
-		console.log("add func")
 		$people.push({id: Math.random(), firstName: null, lastName: null, hasSO: false, SO: {firstName: null, lastName: null}});
 		$people = $people;
 	}
 	function removeInput (id) {
-		console.log("Remove Func")
 		if ($people.length > 1) {
 			$people.splice(id,1)
 			$people = $people;
 		}
 	}
 	function toggleSO (person){
-		console.log("toggle Func")
-		person.hasSO = !person.hasSO
+		person.hasSO = !person.hasSO;
 		$people = $people;
 	}
 </script>
 
 <main>
 	<h1>Wedding Seater</h1>
+	<section class="indent-1">
+	<section>
 		<input type="number" placeholder="max" bind:value={$max}>
 		<input type="number" placeholder="min" bind:value={$min}>
-
-		per table
-		<br>
+		per table<br>
 		{#each $people as $person, id ($person.id)}
 			<button on:click={removeInput(id)}>-</button>
 			<input type="text" placeholder="firstname" bind:value={$person.firstName}>
@@ -43,6 +43,12 @@
 			<button on:click={addInput}>+</button>
 		{/if}
 		{/each}
+	</section>
+	<section>
+
+	</section>
+	</section>
+	
 </main>
 
 <style>
@@ -59,10 +65,15 @@
 		font-size: 3em;
 		font-weight: 100;
 	}
+		
+	section {
+		float: left;
+		padding-right: 5em;
+	}
 
 	input[type = "text"]{
 		text-align: left;
-		width: 8em;
+		width: 6em;
 	}
 
 	input[type="checkbox"] {
