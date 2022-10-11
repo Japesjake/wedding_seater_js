@@ -1,4 +1,4 @@
-import { people } from './store.js'
+import { people } from './stores.js'
 
 export function makeTables(people) {
     let total = people.length
