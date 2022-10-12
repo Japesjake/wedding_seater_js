@@ -1,9 +1,10 @@
 <script>
-	import { people, max, min} from './stores.js'
-	// import { makeTables, update } from './update.js'
-	import Person from './Person.svelte'
-	// $: $people, update($people);
-	// $: makeTables($max, $min);
+	import { min, max, people, tables } from './stores.js'
+	import { update, makeTables } from './update.js'
+	import People from './components/People.svelte'
+	import MaxMin from './components/MaxMin.svelte'
+	import Tables from './components/Tables.svelte'
+	$: $min, $max, makeTables()
 
 </script>
 
@@ -11,14 +12,11 @@
 	<h1>Wedding Seater</h1>
 	<section class="indent-1">
 	<section>
-		<input type="number" placeholder="max" bind:value={$max}>
-		<input type="number" placeholder="min" bind:value={$min}>
-		per table<br>
-			<Person />
-
+		<MaxMin />
+		<People />
 	</section>
 	<section>
-
+		<Tables />
 	</section>
 	</section>
 	
@@ -42,14 +40,6 @@
 	section {
 		float: left;
 		padding-right: 5em;
-	}
-
-	input[type="checkbox"] {
-		width: 1em;
-	}
-
-	input[type="number"] {
-		width: 4em
 	}
 
 	@media (min-width: 640px) {

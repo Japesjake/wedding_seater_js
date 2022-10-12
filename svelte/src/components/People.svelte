@@ -1,5 +1,5 @@
 <script>
-    import { people } from './stores'
+    import { people } from '../stores'
     function addInput () {
     $people.push({id: Math.random(), firstName: null, lastName: null, hasSO: false, SO: {firstName: null, lastName: null}});
     $people = $people;
@@ -37,4 +37,9 @@ Who?
 	text-align: left;
 	width: 6em;
 	}
+
+input[type="checkbox"] {
+	width: 1em;
+}
+
 </style>
