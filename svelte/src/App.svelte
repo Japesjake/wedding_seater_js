@@ -1,10 +1,17 @@
 <script>
 	import { min, max, people, tables } from './stores.js'
-	import { update } from './update.js'
+	import { makeTables } from './scripts/makeTables.js'
+	import { assignCouples, seeTables } from './scripts/assignCouples.js'
 	import People from './components/People.svelte'
-	import MaxMin from './components/MaxMin.svelte'
+	import Max from './components/Max.svelte'
 	import Tables from './components/Tables.svelte'
 	$: $min, $max, $people, update()
+
+function update() {
+	makeTables()
+	assignCouples()
+	seeTables()
+}
 
 </script>
 
@@ -12,7 +19,7 @@
 	<h1>Wedding Seater</h1>
 	<section class="indent-1">
 	<section>
-		<MaxMin />
+		<Max />
 		<People />
 	</section>
 	<section>

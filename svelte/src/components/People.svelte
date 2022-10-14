@@ -1,7 +1,7 @@
 <script>
     import { people } from '../stores'
     function addInput () {
-    $people.push({id: Math.random(), firstName: null, lastName: null, hasSO: false, SO: {firstName: null, lastName: null}});
+    $people.push({id: Math.random(), firstName: null, lastName: null, hasSO: false, table: null, SO: {firstName: null, lastName: null}});
     $people = $people;
 	}
 	function removeInput (id) {
