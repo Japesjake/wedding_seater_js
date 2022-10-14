@@ -10,40 +10,33 @@ function sum (array) {
 }
 
 export function makeTables () {
+    let iteration = 0;
     let numTables = Math.ceil(get(people).length / get(max))
+    let nums = []
+    for (let i = 0; i < numTables; i++) {
+        nums.push(get(max))
+    }
     let totalSubtractor = 0;
-    let nums = [];
-    let iteration = 1;
+    let subtractor = 0;
     while (sum(nums) != get(people).length) {
     // while (false) {
-        console.log("iteration", iteration)
-        console.log("total seats", sum(nums))
-        console.log("total people", get(people).length)
-        console.log("nums", nums)
-        nums = [];
-        let subtractor = totalSubtractor;
-        let num = get(max);
-        while (subtractor) {
-            console.log(subtractor)
-            for (i = 0; i < nums.length; i++) {
-                num - 1;
-                subtractor--;
-                console.log("num", num)
-                if (subtractor >= nums.length) {
-                    continue
-                }
-            }
+    subtractor = totalSubtractor;
+    for (let i = 0; i < numTables; i++) {
+        if (subtractor) {
+            nums[i] -= 1
+            subtractor -= 1
+        }
+        if (sum(nums) == get(people).length) {
+            break
+        }else{
+            totalSubtractor++
         }
     }
-            nums.push(num)
-}
-            totalSubtractor++
             iteration++
             if (iteration >= 20) break
-        }
-        console.log(sum(nums) == get(people).length)
-        console.log(nums)
     }
+    console.log(nums)
+}
 
 export function update (){
     makeTables()
