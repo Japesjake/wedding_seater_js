@@ -12,7 +12,6 @@
 	<h1>Wedding Seater</h1>
 	<section class="indent-1">
 	<section>
-		{$people.length}<br>
 		<MaxMin />
 		<People />
 	</section>
