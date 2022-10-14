@@ -1,16 +1,10 @@
 <script>
 	import { min, max, people, tables } from './stores.js'
-	import { makeTables } from './scripts/makeTables.js'
-	import { assignCouples } from './scripts/assignCouples.js'
+	import { update } from './update.js'
 	import People from './components/People.svelte'
 	import MaxMin from './components/MaxMin.svelte'
 	import Tables from './components/Tables.svelte'
-	$: $min, $max, $people, $tables, update()
-
-function update () {
-	makeTables()
-	assignCouples()
-}
+	$: $min, $max, $people, update()
 
 </script>
 
