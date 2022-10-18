@@ -1,4 +1,5 @@
 <script>
+    import { loop_guard } from 'svelte/internal';
 import { people, max, min, tables } from '../stores.js'
 
 function sum (array) {
@@ -48,6 +49,14 @@ function makeTables () {
     tables.set(nums)
 }
 
+function assign() {
+    for (let i = 0; i < $people.length; i++) {
+        $people[i].table = 1;
+    }
+}
+
+assign()
+
 function autoAssign () {
     makeTables()
 }
@@ -58,11 +67,13 @@ $: $max, $min, $people, autoAssign()
 <main>
     {#each $tables as table, id}
     Table {id + 1} has {table} seats.<br>
-    {#each $people as person}
-    {#if person.table == id + 1}
-    {person.firstName} {person.lastName}<br>
-    {/if}
-    {/each}
+    <div class = 'bordered'>
+        {#each $people as person}
+        {#if person.table == id + 1}
+        {person.firstName} {person.lastName}<br>
+        {/if}
+        {/each}
+    </div>
     {/each}
 </main>
 
@@ -70,4 +81,10 @@ $: $max, $min, $people, autoAssign()
     main {
         font-size: 20px;
     }
+    .bordered {
+		border-width: 3px;
+        border-style: solid;
+        border-color: black;
+        padding-left: 5px;
+	}
 </style>
