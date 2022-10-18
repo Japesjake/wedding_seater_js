@@ -2,6 +2,10 @@ import { people, max, min, tables } from '../stores.js'
 import { get } from 'svelte/store'
 
 export function assignCouples () {
+    for (let i = 0; i < get(people).length; i++) {
+        get(people)[i].table = null;
+        console.log(get(people)[i].table)
+    }
 }
     //     for (let i = 0; i < get(tables).length; i++) {
 //         for (let j = 0; j < get(tables)[i]; j++) {
@@ -16,10 +20,10 @@ export function assignCouples () {
 //     }
 // }
 
-export function seeTables () {
-    for (let i = 0; i < get(people).length; i++){
-        if (get(people)[i].hasSO) {
-            console.log(get(people)[i].table)
-        }
-    }
-}
+// export function seeTables () {
+//     for (let i = 0; i < get(people).length; i++){
+//         if (get(people)[i].hasSO) {
+//             console.log(get(people)[i].table)
+//         }
+//     }
+// }
