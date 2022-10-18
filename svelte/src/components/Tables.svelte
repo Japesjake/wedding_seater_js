@@ -48,16 +48,11 @@ function makeTables () {
     tables.set(nums)
 }
 
-function assignCouples () {
-    
-}
-
-function update () {
+function autoAssign () {
     makeTables()
-    assignCouples()
 }
 
-$: $max, $min, $people, update()
+$: $max, $min, $people, autoAssign()
 </script>
 
 <main>

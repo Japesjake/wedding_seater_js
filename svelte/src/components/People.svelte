@@ -1,7 +1,8 @@
 <script>
     import { people } from '../stores'
-    function addInput () {
-    $people.push({id: Math.random(), firstName: null, lastName: null, hasSO: false, table: null, SO: {firstName: null, lastName: null}});
+    function addInput (id) {
+	let defaultPerson = {id: Math.random(), firstName: null, lastName: null, hasSO: false, table: null, SO: {firstName: null, lastName: null}}
+    $people.splice(id + 1, 0, defaultPerson);
     $people = $people;
 	}
 	function removeInput (id) {
@@ -18,6 +19,7 @@
 
 {#each $people as person, id (person.id)}
 <button on:click={removeInput(id)}>-</button>
+<button on:click={addInput(id)}>+</button>
 <input type="text" placeholder="firstname" bind:value={person.firstName}>
 <input type="text" placeholder="lastname" bind:value={person.lastName}>
 has SO?
@@ -28,7 +30,7 @@ Who?
 <input type="text" placeholder="lastname" bind:value={person.SO.lastName}><br>
 {/if}
 {#if id === $people.length - 1}
-<button on:click={addInput}>+</button>
+<button on:click={addInput($people.length)}>+</button>
 {/if}
 {/each}
 
