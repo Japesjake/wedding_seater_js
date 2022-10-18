@@ -1,17 +1,8 @@
 <script>
-	import { min, max, people, tables } from './stores.js'
-	import { makeTables } from './scripts/makeTables.js'
-	import { assignCouples } from './scripts/assignCouples.js'
+	// import { min, max, people, tables } from './stores.js'
 	import People from './components/People.svelte'
 	import Max from './components/Max.svelte'
 	import Tables from './components/Tables.svelte'
-	$: $min, $max, $people, $tables, update()
-	// $: console.log($people)
-
-function update() {
-	makeTables()
-	assignCouples()
-}
 
 </script>
 
