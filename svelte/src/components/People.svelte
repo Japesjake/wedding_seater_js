@@ -18,12 +18,12 @@
 </script>
 
 {#each $people as person, id (person.id)}
-<button on:click={removeInput(id)}>-</button>
-<button on:click={addInput(id)}>+</button>
-<input type="text" placeholder="firstname" bind:value={person.firstName}>
-<input type="text" placeholder="lastname" bind:value={person.lastName}>
+<button tabindex = -1 on:click={removeInput(id)}>-</button>
+<button tabindex = -1 on:click={addInput(id)}>+</button>
+<input tabindex = 0 type="text" placeholder="firstname" bind:value={person.firstName}>
+<input tabindex = 0 type="text" placeholder="lastname" bind:value={person.lastName}>
 has SO?
-<input type="checkbox" on:click="{toggleSO(person)}" checked={person.hasSO}><br>
+<input tabindex = -1 type="checkbox" on:click="{toggleSO(person)}" checked={person.hasSO}><br>
 {#if person.hasSO}
 Who?
 <input type="text" placeholder="firstname" bind:value={person.SO.firstName}>
