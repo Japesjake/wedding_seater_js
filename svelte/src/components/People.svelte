@@ -1,7 +1,8 @@
 <script>
     import { people } from '../stores'
-    function addInput (id) {
-	let defaultPerson = {id: Math.random(), firstName: '', lastName: '', hasSO: false, table: null, locked: false, SO: {firstName: '', lastName: ''}}
+	export let party;
+    function addInput (id, party) {
+	let defaultPerson = {id: Math.random(), firstName: '', lastName: '', hasSO: false, table: null, locked: false, SO: {firstName: '', lastName: ''}, table: '', type: '', locked: false, party: party}
     $people.splice(id + 1, 0, defaultPerson);
     $people = $people;
 	}
@@ -15,11 +16,19 @@
 		person.hasSO = !person.hasSO;
 		$people = $people;
 	}
+	// checks if party has at least one.
+	function hasOne (person, party) {
+		// if () {
+
+		// }
+	}
 </script>
 
+<h1><u>Guests of {party}</u></h1><br>
 {#each $people as person, id (person.id)}
+{#if person.party == party}
 <button tabindex = -1 on:click={removeInput(id)}>-</button>
-<button tabindex = -1 on:click={addInput(id)}>+</button>
+<button tabindex = -1 on:click={addInput(id, party)}>+</button>
 <input tabindex = 0 type="text" placeholder="firstname" bind:value={person.firstName}>
 <input tabindex = 0 type="text" placeholder="lastname" bind:value={person.lastName}>
 has SO?
@@ -31,6 +40,7 @@ Who?
 {/if}
 {#if id === $people.length - 1}
 <button on:click={addInput($people.length)}>+</button>
+{/if}
 {/if}
 {/each}
 

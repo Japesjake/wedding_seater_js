@@ -2,6 +2,7 @@
 	import People from './components/People.svelte'
 	import Max from './components/Max.svelte'
 	import Tables from './components/Tables.svelte'
+	import { people } from './stores'
 </script>
 
 <main>
@@ -9,8 +10,8 @@
 	<section class="indent-1">
 	<section>
 		<Max />
-		<People type="groom" people={$people}/>
-		<!-- <People type="bride" people={}/> -->
+		<People party={"groom"} />
+		<People party={"bride"} />
 	</section>
 	<section>
 		<Tables />

@@ -10,8 +10,8 @@ function store (key, defaultValue) {
     return write
 }
 
-let defaultValue = [{id: Math.random(), firstName: "Lucas", lastName: "Redlawski", hasSO: false, SO: {}, table: '', type: '', locked: false},
-                    {id: Math.random(), firstName: "James", lastName: "Showalter", hasSO: false, SO: {}, table: '', type: '', locked: false}];
+let defaultValue = [{id: Math.random(), firstName: "Lucas", lastName: "Redlawski", hasSO: false, SO: {firstName: '', lastName: ''}, table: '', type: '', locked: false, party:"groom"},
+                    {id: Math.random(), firstName: "James", lastName: "Showalter", hasSO: false, SO: {firstName: '', lastName: ''}, table: '', type: '', locked: false, party:"bride"}];
 export const people = store("people", defaultValue)
 people.subscribe((value) => localStorage.people = JSON.stringify((value)))
 

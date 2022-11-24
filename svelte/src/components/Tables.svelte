@@ -1,5 +1,4 @@
 <script>
-    import { loop_guard } from 'svelte/internal';
 import { people, max, min, tables } from '../stores.js'
 
 function sum (array) {
@@ -51,6 +50,9 @@ function makeTables () {
 
 function assign() {
     for (let i = 0; i < $people.length; i++) {
+        for (let j = 0; j < $tables.length; j++){
+
+        }
         $people[i].table = 1;
     }
 }
