@@ -7,7 +7,7 @@
     $people = $people;
 	}
 	function removeInput (id) {
-		if ($people.length > 1) {
+		if (!isOneLeft(party)) {
 			$people.splice(id,1)
 			$people = $people;
 		}
@@ -16,11 +16,19 @@
 		person.hasSO = !person.hasSO;
 		$people = $people;
 	}
-	// checks if party has at least one.
-	function hasOne (person, party) {
-		// if () {
-
-		// }
+	// checks if there is at least one guest of bride and groom.
+	function isOneLeft (party) {
+		let numPeople = 0;
+		for ( let person of $people) {
+			if (party == person.party) {
+				numPeople++
+				// console.log('has')
+			}
+		}
+		if (numPeople <= 1) {
+			return true
+		}
+		return false
 	}
 </script>
 

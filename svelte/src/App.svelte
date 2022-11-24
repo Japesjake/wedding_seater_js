@@ -2,7 +2,6 @@
 	import People from './components/People.svelte'
 	import Max from './components/Max.svelte'
 	import Tables from './components/Tables.svelte'
-	import { people } from './stores'
 </script>
 
 <main>
