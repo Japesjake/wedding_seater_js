@@ -1,7 +1,7 @@
 <script>
     import { people } from '../stores'
     function addInput (id) {
-	let defaultPerson = {id: Math.random(), firstName: null, lastName: null, hasSO: false, table: null, SO: {firstName: null, lastName: null}}
+	let defaultPerson = {id: Math.random(), firstName: '', lastName: '', hasSO: false, table: null, locked: false, SO: {firstName: '', lastName: ''}}
     $people.splice(id + 1, 0, defaultPerson);
     $people = $people;
 	}

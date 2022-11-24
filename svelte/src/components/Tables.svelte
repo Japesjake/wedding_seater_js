@@ -55,13 +55,18 @@ function assign() {
     }
 }
 
-assign()
+function toggleLocked (person){
+		person.locked = !person.locked;
+		$people = $people
+	}
 
 function autoAssign () {
     makeTables()
+    assign()
 }
 
 $: $max, $min, $people, autoAssign()
+
 </script>
 
 <main>
@@ -70,7 +75,11 @@ $: $max, $min, $people, autoAssign()
     <div class = 'bordered'>
         {#each $people as person}
         {#if person.table == id + 1}
+        <input type='checkbox' on:click={toggleLocked(person)}>
         {person.firstName} {person.lastName}<br>
+        {#if person.hasSO}
+        {person.SO.firstName} {person.SO.lastName}<br>
+        {/if}
         {/if}
         {/each}
     </div>

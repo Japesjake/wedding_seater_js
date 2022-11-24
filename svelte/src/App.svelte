@@ -9,7 +9,8 @@
 	<section class="indent-1">
 	<section>
 		<Max />
-		<People />
+		<People type="groom" people={$people}/>
+		<!-- <People type="bride" people={}/> -->
 	</section>
 	<section>
 		<Tables />

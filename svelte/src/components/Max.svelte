@@ -1,10 +1,10 @@
 <script>
 
-    import { max, min } from "../stores";
+    import { max } from "../stores";
 
 </script>
 max:
-<input type="number" placeholder="max" bind:value={$max}>
+<input type="number" placeholder="num" bind:value={$max}>
 per table.<br>
 
 <style>
