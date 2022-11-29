@@ -19,10 +19,6 @@ let defaultMax = ""
 export const max = store("max", defaultMax)
 max.subscribe((value) => localStorage.max = JSON.stringify((value)))
 
-let defaultMin = ""
-export const min = store("min", defaultMin)
-min.subscribe((value) => localStorage.min = JSON.stringify((value)))
-
-let defaultTables = ''
+let defaultTables = []
 export const tables = store("tables", defaultTables)
 tables.subscribe((value) => localStorage.tables = JSON.stringify((value)))

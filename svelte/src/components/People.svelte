@@ -1,8 +1,10 @@
 <script>
-    import { people } from '../stores'
+    import App from '../App.svelte';
+	import { people } from '../stores';
 	export let party;
+	
     function addInput (id, party) {
-	let defaultPerson = {id: Math.random(), firstName: '', lastName: '', hasSO: false, table: null, locked: false, SO: {firstName: '', lastName: ''}, table: '', type: '', locked: false, party: party}
+	let defaultPerson = {id: Math.random(), firstName: '', lastName: '', hasSO: false, table: null, locked: false, SO: {firstName: '', lastName: ''}, locked: false, party: party}
     $people.splice(id + 1, 0, defaultPerson);
     $people = $people;
 	}
@@ -16,13 +18,12 @@
 		person.hasSO = !person.hasSO;
 		$people = $people;
 	}
-	// checks if there is at least one guest of bride and groom.
+	// checks if there is one guest in party.
 	function isOneLeft (party) {
 		let numPeople = 0;
 		for ( let person of $people) {
 			if (party == person.party) {
 				numPeople++
-				// console.log('has')
 			}
 		}
 		if (numPeople <= 1) {
@@ -46,12 +47,9 @@ Who?
 <input type="text" placeholder="firstname" bind:value={person.SO.firstName}>
 <input type="text" placeholder="lastname" bind:value={person.SO.lastName}><br>
 {/if}
-{#if id === $people.length - 1}
-<button on:click={addInput($people.length)}>+</button>
-{/if}
 {/if}
 {/each}
-
+<button on:click={addInput($people.length, party)}>+</button>
 <style>
 	input[type = "text"]{
 	text-align: left;

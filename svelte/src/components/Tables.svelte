@@ -1,5 +1,5 @@
 <script>
-import { people, max, min, tables } from '../stores.js'
+import { people, max, tables } from '../stores.js'
 
 function sum (array) {
     let total = 0
@@ -43,17 +43,21 @@ function makeTables () {
             }else{
                 totalSubtractor++
             }
-        }  
+        }
     }
-    tables.set(nums)
+    $tables = []
+    for (let num of nums){
+        $tables.push({seats: num, people: 0})
+        $tables = $tables
+    }
 }
 
-function assign() {
-    for (let i = 0; i < $people.length; i++) {
-        for (let j = 0; j < $tables.length; j++){
-
+function assignCouples() {
+    console.log("thing")
+    for (let person of $people) {
+        if (person.hasSO) {
+            console.log("ok")
         }
-        $people[i].table = 1;
     }
 }
 
@@ -64,16 +68,16 @@ function toggleLocked (person){
 
 function autoAssign () {
     makeTables()
-    assign()
+    assignCouples()
 }
 
-$: $max, $min, $people, autoAssign()
+$: $max, $people, autoAssign()
 
 </script>
 
 <main>
     {#each $tables as table, id}
-    Table {id + 1} has {table} seats.<br>
+    Table {id + 1} has {table.seats} seats.<br>
     <div class = 'bordered'>
         {#each $people as person}
         {#if person.table == id + 1}
