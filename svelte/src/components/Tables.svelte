@@ -46,27 +46,39 @@ function makeTables () {
         }
     }
     $tables = []
-    for (let num of nums){
-        $tables.push({seats: num, people: 0})
-        $tables = $tables
+    // for (let num of nums){
+    for (let i = 0; i < nums.length; i++) {
+        $tables.push({number: i + 1, seats: nums[i], people: 0})
     }
 }
-
-function assignCouples() {
-    console.log("thing")
+function unassign() {
     for (let person of $people) {
-        if (person.hasSO) {
-            console.log("ok")
+        person.assigned = false;
+        person.table = false;
+    }
+}
+function assignCouples() {
+    for (let person of $people) {
+        if (person.hasSO && person.assigned == false) {
+            for (let table of $tables) {
+                if (table.seats >= table.people + 2) {
+                    table.people = table.people + 2;
+                    console.log(table.people);
+                    person.table = table.number;
+                    person.assigned = true;
+                }
+            }
         }
     }
 }
 
 function toggleLocked (person){
 		person.locked = !person.locked;
-		$people = $people
+		$people = $people;
 	}
 
 function autoAssign () {
+    unassign()
     makeTables()
     assignCouples()
 }
@@ -77,7 +89,7 @@ $: $max, $people, autoAssign()
 
 <main>
     {#each $tables as table, id}
-    Table {id + 1} has {table.seats} seats.<br>
+    Table {table.number} has {table.seats} seats.<br>
     <div class = 'bordered'>
         {#each $people as person}
         {#if person.table == id + 1}
