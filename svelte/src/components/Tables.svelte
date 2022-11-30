@@ -46,10 +46,10 @@ function makeTables () {
         }
     }
     $tables = []
-    // for (let num of nums){
     for (let i = 0; i < nums.length; i++) {
         $tables.push({number: i + 1, seats: nums[i], people: 0})
     }
+    $tables = $tables;
 }
 function unassign() {
     for (let person of $people) {
@@ -58,24 +58,22 @@ function unassign() {
     }
 }
 function assignCouples() {
-    for (let person of $people) {
-        if (person.hasSO && person.assigned == false) {
-            for (let table of $tables) {
-                if (table.seats >= table.people + 2) {
-                    table.people = table.people + 2;
-                    console.log(table.people);
-                    person.table = table.number;
-                    person.assigned = true;
-                }
+    for (let table of $tables) {
+        for (let person of $people) {
+            if (person.hasSO && !person.assigned && table.seats >= table.people + 2) {
+                table.people += 2
+                console.log(table);
+                person.table = table.number;
+                person.assigned = true;
             }
         }
     }
+    $people = $people
 }
 
-function toggleLocked (person){
-		person.locked = !person.locked;
-		$people = $people;
-	}
+function toggleLocked (person) {
+    person.locked = !person.locked
+}
 
 function autoAssign () {
     unassign()

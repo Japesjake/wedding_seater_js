@@ -11,6 +11,7 @@
 	function removeInput (id) {
 		if (!isOneLeft(party)) {
 			$people.splice(id,1)
+			$people = $people;
 		}
 	}
 	function toggleSO (person){
