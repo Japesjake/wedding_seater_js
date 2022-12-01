@@ -62,15 +62,13 @@ function unassign() {
             person.assigned = false;
             person.table = false;
         }
-
     }
 }
-function assignSinglesFactors () {
-    let singles = 0;
-    for (let person of $people) {
-        
-    }
-}
+// function isFull (table) {
+//     if (table.seats <= table.people){
+//         return true
+//     }
+// }
 function assignCouples() {
     for (let table of $tables) {
         for (let person of $people) {
@@ -83,6 +81,7 @@ function assignCouples() {
     }
     $people = $people
 }
+
 function assignSingles() {
     for (let table of $tables) {
         for (let person of $people) {
@@ -95,7 +94,6 @@ function assignSingles() {
     }
     $people = $people
 }
-
 function toggleLocked (person) {
     person.locked = !person.locked
     $people = $people
