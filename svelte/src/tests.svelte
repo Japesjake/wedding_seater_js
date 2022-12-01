@@ -1,6 +1,9 @@
-import { get_all_dirty_from_scope } from 'svelte/internal'
+<script>
 import { tables } from './stores.js'
+</script>
 
 export function test() {
-    for (let table of getItem("tables"))
+    for (let table of $tables) {
+        console.log("not ok"))
+    }
 }

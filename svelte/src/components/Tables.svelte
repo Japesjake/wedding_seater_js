@@ -58,47 +58,33 @@ function makeTables () {
 }
 function unassign() {
     for (let person of $people) {
-        if (!person.locked) {
-            person.assigned = false;
-            person.table = false;
-        }
+        person.assigned = false;
+        person.table = false;
     }
 }
-function assignCouples() {
+function assign() {
     for (let table of $tables) {
         for (let person of $people) {
-            if (person.hasSO && !person.assigned && table.seats >= table.people + 2) {
-                table.people += 2
+            if (!person.assigned) {
+                if (person.hasSO && table.seats >= table.people + 2) {
+                table.people += 2;
+                person.table = table.number;
+                person.assigned = true;
+            } else if (!person.hasSO && table.seats > table.people) {
+                table.people += 1;
                 person.table = table.number;
                 person.assigned = true;
             }
-        }
-    }
-    $people = $people
-}
-
-function assignSingles() {
-    for (let table of $tables) {
-        for (let person of $people) {
-            if (!person.hasSO && !person.assigned && table.seats >= table.people + 1) {
-                table.people += 1
-                person.table = table.number;
-                person.assigned = true;
             }
+
         }
     }
     $people = $people
 }
-function toggleLocked (person) {
-    person.locked = !person.locked
-    $people = $people
-}
-
 function autoAssign () {
     unassign()
     makeTables()
-    assignCouples()
-    assignSingles()
+    assign()
 }
 
 $: $max, $people, autoAssign()
@@ -110,8 +96,7 @@ $: $max, $people, autoAssign()
     <div class = 'bordered'>
         {#each $people as person}
         {#if person.table == id + 1}
-        <input type='checkbox' checked={person.locked} on:click={toggleLocked(person)}>
-        {person.firstName} {person.lastName}<br>
+        - {person.firstName} {person.lastName}<br>
         {#if person.hasSO}
         {person.SO.firstName} {person.SO.lastName}<br>
         {/if}
