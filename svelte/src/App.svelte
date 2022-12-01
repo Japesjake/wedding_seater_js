@@ -9,8 +9,7 @@
 	<section class="indent-1">
 	<section>
 		<Max />
-		<People party={"groom"} />
-		<People party={"bride"} />
+		<People />
 	</section>
 	<section>
 		<Tables />

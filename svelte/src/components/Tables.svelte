@@ -64,11 +64,6 @@ function unassign() {
         }
     }
 }
-// function isFull (table) {
-//     if (table.seats <= table.people){
-//         return true
-//     }
-// }
 function assignCouples() {
     for (let table of $tables) {
         for (let person of $people) {
