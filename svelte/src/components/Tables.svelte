@@ -9,20 +9,29 @@ function sum (array) {
     return total
 }
 
-function getTotalGuests() {
+//returns total guests, couples and singles in that order.
+function getTotals() {
     let total = 0;
+    let couples = 0;
+    let singles = 0;
     for (let i = 0; i < $people.length; i++) {
         if ($people[i].hasSO) {
             total += 2
+            couples += 1
         }else{
             total += 1
+            singles += 1
         }
     }
-    return total
+    return [total, couples, singles]
+}
+
+function getTotalSingles() {
 }
 
 function makeTables () {
-    let totalGuests = getTotalGuests()
+    let totals = getTotals()
+    let totalGuests = totals[0]
     if ($max <= 0) {return}
     let numTables = Math.ceil(totalGuests / $max)
     let nums = []
@@ -53,16 +62,24 @@ function makeTables () {
 }
 function unassign() {
     for (let person of $people) {
-        person.assigned = false;
-        person.table = false;
+        if (!person.locked) {
+            person.assigned = false;
+            person.table = false;
+        }
+
+    }
+}
+function assignSinglesFactors () {
+    let singles = 0;
+    for (let person of $people) {
+
     }
 }
 function assignCouples() {
     for (let table of $tables) {
         for (let person of $people) {
-            if (person.hasSO && !person.assigned && table.seats >= table.people + 2) {
+            if (person.hasSO && !person.assigned && table.seats >= table.people + 1) {
                 table.people += 2
-                console.log(table);
                 person.table = table.number;
                 person.assigned = true;
             }
