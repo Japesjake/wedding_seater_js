@@ -3,6 +3,11 @@ export default class Household {
 		this.primary = primary
 		this.spouse = spouse
 		this.children = children
+
+		// If there is a spouse, couple them.
+		if (this.spouse !== null) {
+			this.primary.coupleWith(this.spouse)
+		}
 	}
 
 	get count() {

@@ -9,12 +9,14 @@ export default class Person {
 	}
 
 	coupleWith(person) {
-		this.spouse = person
-		person.coupleWith(this)
+		if (!this.isCoupledWith(person)) {
+			this.spouse = person
+			person.coupleWith(this)
+		}
 	}
 
 	isCoupled() {
-		return this.spouse !== undefined
+		return this.spouse !== undefined && this.spouse !== null
 	}
 
 	isCoupledWith(person) {
