@@ -57,7 +57,7 @@ describe('Household counts', () => {
 describe('Household couples', () => {
 	it('should return false if there is no spouse', () => {
 		const john = new Person('John', 'Doe')
-		const household = new Household(john)
+		new Household(john)
 		expect(john.isCoupled()).toBe(false)
 		const rando = new Person('Random', 'Person')
 		expect(rando.isCoupled()).toBe(false)
