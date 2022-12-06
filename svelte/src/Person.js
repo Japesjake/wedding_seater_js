@@ -7,4 +7,17 @@ export default class Person {
 	get fullName() {
 		return `${this.firstName} ${this.lastName}`
 	}
+
+	coupleWith(person) {
+		this.spouse = person
+		person.coupleWith(this)
+	}
+
+	isCoupled() {
+		return this.spouse !== undefined
+	}
+
+	isCoupledWith(person) {
+		return this.spouse === person
+	}
 }
