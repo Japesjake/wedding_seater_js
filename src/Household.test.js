@@ -60,6 +60,7 @@ describe('Household couples', () => {
 		const household = new Household(john)
 		expect(john.isCoupled()).toBe(false)
 		const rando = new Person('Random', 'Person')
+		expect(rando.isCoupled()).toBe(false)
 		expect(john.isCoupledWith(rando)).toBe(false)
 	})
 
@@ -68,6 +69,7 @@ describe('Household couples', () => {
 		const jane = new Person('Jane', 'Doe')
 		new Household(john, jane)
 		expect(john.isCoupled()).toBe(true)
+		expect(jane.isCoupled()).toBe(true)
 		expect(john.isCoupledWith(jane)).toBe(true)
 		expect(jane.isCoupledWith(john)).toBe(true)
 	})
