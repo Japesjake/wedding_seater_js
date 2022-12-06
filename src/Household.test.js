@@ -55,14 +55,6 @@ describe('Household counts', () => {
 })
 
 describe('Household couples', () => {
-	it('should return true if there is a spouse', () => {
-		const household = new Household(
-			new Person('John', 'Doe'),
-			new Person('Jane', 'Doe')
-		)
-		expect(household.couple).toBe(true)
-	})
-
 	it('should return false if there is no spouse', () => {
 		const john = new Person('John', 'Doe')
 		const household = new Household(john)
