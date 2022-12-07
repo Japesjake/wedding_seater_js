@@ -1,12 +1,15 @@
 export default class Table {
-    constructor(people = [], size = 0) {
+    constructor(size = 0, people = []) {
+        this.size = size,
         this.people = people
-        this.size = size
     }
     isFull() {
-        if (this.people.length >= this.size) {
+        if (this.people.length == this.size) {
             return true
         }
+    }
+    isOver() {
+        return this.size < this.people.length
     }
     availableSeats() {
         return this.size - this.people.length

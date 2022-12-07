@@ -1,12 +1,38 @@
-import { intros } from 'svelte/internal'
 import Table from './Table'
 import Person from './Person'
 
 describe('Table', () => {
     it('should return true if table is full', () => {
         const table = new Table(
-            [new Person('John', 'Doe')], 1
+            1,
+            [new Person('John', 'Doe')]
         )
-        expect(table.size <= table.people.length).toBe(true)
+        expect(table.isFull()).toBe(true)
+    })
+    it('should return true if table is over capacity', () => {
+        const table = new Table(
+            1,
+            [
+                new Person('John', 'Doe'),
+                new Person('Jane', 'Doe')
+            ]
+        )
+        expect(table.isOver()).toBe(true)
+    })
+    it('should return true if seats available', () => {
+        const table = new Table(
+            3,
+            [
+                new Person('John', 'Doe'),
+                new Person('Jane', 'Doe')
+            ]
+        )
+        expect(table.availableSeats()).toBe(1)
+    })
+    it('should return true if person is added.', () => {
+        const table = new Table()
+        const person = new Person('John', 'Doe')
+        table.addPerson(person)
+        expect(table.people).toStrictEqual([person])
     })
 })
