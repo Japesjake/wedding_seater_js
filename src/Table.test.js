@@ -9,16 +9,6 @@ describe('Table', () => {
         )
         expect(table.isFull()).toBe(true)
     })
-    it('should return true if table is over capacity', () => {
-        const table = new Table(
-            1,
-            [
-                new Person('John', 'Doe'),
-                new Person('Jane', 'Doe')
-            ]
-        )
-        expect(table.isOver()).toBe(true)
-    })
     it('should return true if seats available', () => {
         const table = new Table(
             3,
@@ -30,7 +20,7 @@ describe('Table', () => {
         expect(table.availableSeats()).toBe(1)
     })
     it('should return true if person is added.', () => {
-        const table = new Table()
+        const table = new Table(1)
         const person = new Person('John', 'Doe')
         table.addPerson(person)
         expect(table.people).toStrictEqual([person])

@@ -1,6 +1,6 @@
 export default class Table {
-    constructor(size = 0, people = []) {
-        this.size = size,
+    constructor(size, people = []) {
+        this.size = size
         this.people = people
     }
     isFull() {
@@ -8,13 +8,13 @@ export default class Table {
             return true
         }
     }
-    isOver() {
-        return this.size < this.people.length
-    }
     availableSeats() {
         return this.size - this.people.length
     }
     addPerson(person) {
+        if (this.isFull()) {
+            throw "table is full."
+        }
         this.people.push(person)
     }
 }
