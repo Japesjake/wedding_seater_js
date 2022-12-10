@@ -1,16 +1,18 @@
+import { tests } from './tests'
 export default class Wedding {
     constructor(people, tables) {
         this.people = people
         this.tables = tables
-    assignRandom() {
-        for (let table of tables) {
-            for (let i; i < people.length; i++)
-            table.addPerson(people[i])
+    }
+    wildAssign() {
+        for (let i = 0; i < this.people.length; i++) {
+            for (let j = 0; j < this.tables.length; j++) {
+                this.tables[j].people.push(this.people[i])
+                this.people.splice(i)
+            }
         }
     }
-    }
-}
     assign() {
-        this.assignRandom()
+        this.wildAssign()
     }
 }

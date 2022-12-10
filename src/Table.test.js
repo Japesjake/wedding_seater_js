@@ -1,6 +1,6 @@
 import Table from './Table'
 import Person from './Person'
-
+import Wedding from './Wedding'
 describe('Table', () => {
     it('should return true if table is full', () => {
         const table = new Table(
