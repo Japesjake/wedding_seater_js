@@ -3,14 +3,13 @@ import Person from './Person'
 import Wedding from './Wedding'
 import { tests } from './tests.js'
 describe('Wedding', () => {
-    tests.forEach((test) => {
-        it('test ' + String(test[2]) + ': should return true if unassigned people array is empty after assignment', () => {
-            const wedding = new Wedding(test[0], test[1])
+        it.each(tests)('test should return true if unassigned people array is empty after assignment', (test) => {
+            const wedding = new Wedding(test.people, test.tables)
             wedding.assign()
             expect(wedding.people).toStrictEqual([])
         })
-    })
-    it('test ' + String(test[2]) + ': should return true if person is removed', () => {
+    // })
+    it('test: should return true if person is removed', () => {
         const wedding = new Wedding([new Person('John', 'Doe')], [new Table(1)])
         wedding.people.shift()
         expect(wedding.people).toStrictEqual([])
