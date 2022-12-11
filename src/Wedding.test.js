@@ -20,10 +20,16 @@ describe('Wedding', () => {
         }
         expect(array).toStrictEqual([])
     })
-    it('should return true if table is maxed out', () => {
+    it('should return true if table is maxed out after assignment', () => {
         const wedding = new Wedding([new Person('John', 'Doe'), new Person('Jane', 'Doe')], [new Table(1)])
         wedding.assign()
         expect(wedding.tables[0].isFull()).toBe(true)
+    })
+    it('should return true if tables are not over-filled', () => {
+        const wedding = new Wedding([new Person('John', 'Doe'), new Person('Jane', 'Doe')], [new Table(1)])
+        wedding.assign()
+
+            expect(wedding.areOver()).toBe(false)
     })
     it('should return true if person is not added when table is full', () => {
         const wedding = new Wedding([new Person('John', 'Doe'), new Person('Jane', 'Doe')], [new Table(1)])

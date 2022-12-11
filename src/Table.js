@@ -17,5 +17,11 @@ export default class Table {
         }
         this.people.push(person)
     }
+    isOver() {
+        if (this.size < this.people.length) {
+            return true
+        }
+        return false
+    }
 }
 

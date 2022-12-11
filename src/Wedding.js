@@ -16,8 +16,14 @@ export default class Wedding {
         this.wildAssign()
     }
     removePerson (id) {
-        if (this.people != 0) {
-            this.people.splice(id)
+        this.people.splice(id)
+    }
+    areOver () {
+        for (let table of this.tables) {
+            if (table.isOver()) {
+                return true
+            }
         }
+        return false
     }
 }
