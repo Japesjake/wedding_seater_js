@@ -12,10 +12,9 @@ export default class Table {
         return this.size - this.people.length
     }
     addPerson(person) {
-        if (this.isFull()) {
-            throw "table is full."
+        if (!this.isFull()) {
+            this.people.push(person)
         }
-        this.people.push(person)
     }
     isOver() {
         if (this.size < this.people.length) {

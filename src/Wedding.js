@@ -5,10 +5,12 @@ export default class Wedding {
         this.tables = tables
     }
     wildAssign() {
-        for (let i = 0; i < this.people.length; i++) {
-            for (let j = 0; j < this.tables.length; j++) {
-                this.tables[j].addPerson(this.people[i])
-                this.removePerson(i)
+        for (let person of this.people) {
+            for (let table of this.tables) {
+                if (this.people.includes(person)){
+                    table.addPerson(person)
+                    this.removePerson(this.people.indexOf(person))
+                }
             }
         }
     }
