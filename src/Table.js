@@ -17,8 +17,5 @@ export default class Table {
         }
         this.people.push(person)
     }
-    removePerson() {
-        this.people.shift()
-    }
 }
 
