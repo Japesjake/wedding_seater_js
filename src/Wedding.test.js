@@ -13,22 +13,10 @@ describe('Wedding', () => {
         wedding.removePerson(0)
         expect(wedding.people).toStrictEqual([new Person('Jane', 'Doe')])
     })
-    it('should return true if all items are removed from a list', () => {
-        let array = [1, 2, 3, 4]
-        for (let i = 0; i < array.length; i++) {
-            array.splice(0)
-        }
-        expect(array).toStrictEqual([])
-    })
     it('should return true if table is maxed out after assignment', () => {
         const wedding = new Wedding([new Person('John', 'Doe'), new Person('Jane', 'Doe')], [new Table(1)])
         wedding.assign()
         expect(wedding.tables[0].isFull()).toBe(true)
-    })
-    it('should return true if tables are not over-filled after assignment', () => {
-        const wedding = new Wedding([new Person('John', 'Doe'), new Person('Jane', 'Doe')], [new Table(1)])
-        wedding.assign()
-        expect(wedding.tables[0].isOver()).toBe(false)
     })
     it('should return true if person is not added when table is full', () => {
         const wedding = new Wedding([new Person('John', 'Doe'), new Person('Jane', 'Doe')], [new Table(1)])
@@ -49,8 +37,5 @@ describe('Wedding', () => {
         wedding.assign()
         let assigned = wedding.getAssignedPeople()
         expect(unassigned).toStrictEqual(assigned)
-    })
-    it('should raise an exception', () => {
-        const wedding = new Wedding([new Person('John', 'Doe'), new Person('Jane', 'Doe')], [new Table(1)])
     })
 })

@@ -19,11 +19,5 @@ export default class Table {
             return true
         }
     }
-    isOver() {
-        if (this.size < this.people.length) {
-            return true
-        }
-        return false
-    }
 }
 
