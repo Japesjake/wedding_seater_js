@@ -21,7 +21,8 @@ export default class Wedding {
         let iteration = 1
         while (this.people != [] && iteration < 100) {
             for (let i = 0; i < this.tables.length; i++) {
-                if (this.tables[i].addPerson(this.people[0])) {
+                let assigned = this.tables[i].addPerson(this.people[0])
+                if (assigned) {
                     this.removePerson(0)
                 }
                 iteration += 1
