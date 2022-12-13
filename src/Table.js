@@ -11,9 +11,11 @@ export default class Table {
     availableSeats() {
         return this.size - this.people.length
     }
+    // returns true if person is added.
     addPerson(person) {
         if (!this.isFull()) {
             this.people.push(person)
+            return true
         }
     }
     isOver() {
