@@ -7,6 +7,7 @@ export default class Table {
         if (this.people.length == this.size) {
             return true
         }
+        return false
     }
     availableSeats() {
         return this.size - this.people.length

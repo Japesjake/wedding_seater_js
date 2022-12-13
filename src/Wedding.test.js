@@ -43,14 +43,14 @@ describe('Wedding', () => {
         const wedding = new Wedding([],[new Table(1, [new Person('John', 'Doe')]), new Table(1, [new Person('Jane', 'Doe')])])
         expect(wedding.getAssignedPeople()).toStrictEqual([new Person('John', 'Doe'), new Person('Jane', 'Doe')])
     })
-    it('should return true if everyone is assigned', () => {
-        const wedding = new Wedding([])
-    })
-    it('should return true if the people before assignment are all accounted for in tables', () => {
+    it('should return true if the people before assignment are all accounted for in tables after assignment', () => {
         const wedding = new Wedding([new Person('John', 'Doe'), new Person('Jane', 'Doe')], [new Table(2)])
         let unassigned = [...wedding.people]
         wedding.assign()
         let assigned = wedding.getAssignedPeople()
         expect(unassigned).toStrictEqual(assigned)
+    })
+    it('should raise an exception', () => {
+        const wedding = new Wedding([new Person('John', 'Doe'), new Person('Jane', 'Doe')], [new Table(1)])
     })
 })

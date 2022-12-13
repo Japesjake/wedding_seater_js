@@ -16,16 +16,22 @@ export default class Wedding {
         }
         return array
     }
+    areFull () {
+        for (let table of this.tables) {
+            if (!table.isFull()) {
+                return false
+            }
+        }
+        return true
+    }
     // something wrong in here
     wildAssign() {
-        let iteration = 1
-        while (this.people != [] && iteration < 100) {
+        while (this.people != [] && !this.areFull()) {
             for (let i = 0; i < this.tables.length; i++) {
                 let assigned = this.tables[i].addPerson(this.people[0])
                 if (assigned) {
                     this.removePerson(0)
                 }
-                iteration += 1
             }
         }
     }

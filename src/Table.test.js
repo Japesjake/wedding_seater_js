@@ -9,6 +9,13 @@ describe('Table', () => {
         )
         expect(table.isFull()).toBe(true)
     })
+    it('should return true if table is not full', () => {
+        const table = new Table(
+            1,
+            []
+        )
+        expect(table.isFull()).toBe(false)
+    })
     it('should return true if seats available', () => {
         const table = new Table(
             3,
