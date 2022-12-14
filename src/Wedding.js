@@ -24,7 +24,6 @@ export default class Wedding {
         }
         return true
     }
-    // something wrong in here
     wildAssign() {
         while (this.people != [] && !this.areFull()) {
             for (let i = 0; i < this.tables.length; i++) {
@@ -34,8 +33,5 @@ export default class Wedding {
                 }
             }
         }
-    }
-    assign() {
-        this.wildAssign()
     }
 }
