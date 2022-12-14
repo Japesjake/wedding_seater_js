@@ -16,7 +16,19 @@ describe('Person', () => {
         const man = new Person('John', 'Doe') 
 		const woman = new Person('Jane', 'Doe')
         man.coupleWith(woman)
-        expect(man.isCoupledWith(woman) && woman.isCoupledWith(man)).toBe(true)
+        expect(man.isCoupledWith(woman)).toBe(true)
+	})
+	it('should return true if man is coupled with woman', () => {
+        const man = new Person('John', 'Doe') 
+		const woman = new Person('Jane', 'Doe')
+        man.coupleWith(woman)
+        expect(man.isCoupledWith(woman)).toBe(true)
+	})
+	it('should return true if woman is coupled with man', () => {
+        const man = new Person('John', 'Doe') 
+		const woman = new Person('Jane', 'Doe')
+        man.coupleWith(woman)
+        expect(woman.isCoupledWith(man)).toBe(true)
 	})
 	it('should return true if person is assigned to table', () => {
         const person = new Person('John', 'Doe')

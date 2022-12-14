@@ -4,7 +4,7 @@ export default class Wedding {
         this.people = people
         this.tables = tables
     }
-    removePerson (id) {
+    removePersonById (id) {
         this.people.splice(id, 1)
     }
     getAssignedPeople () {
@@ -28,9 +28,20 @@ export default class Wedding {
         while (this.people != [] && !this.areFull()) {
             for (let table of this.tables) {
                 let person = this.people[0]
+                if (person.isCoupled()) {
+                    for (let i = 0; i < this.people; i++) {
+                        if (spouse.isCoupledWith(person)){
+                            let assigned = spouse.assignTo(table)
+                            if (assigned) {
+                                this.removePersonById(i)
+                            }
+                        }
+
+                    }
+                }
                 let assigned = person.assignTo(table)
                 if (assigned) {
-                    this.removePerson(0)
+                    this.removePersonById(0)
                 }
             }
         }
