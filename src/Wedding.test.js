@@ -3,7 +3,7 @@ import Person from './Person'
 import Wedding from './Wedding'
 import { tests } from './tests.js'
 describe('Wedding', () => {
-    it('should return true if unassigned people array is empty atfer wild assignment', () => {
+    it('should return true if unassigned people array is empty after wild assignment', () => {
         const wedding = new Wedding([new Person('John', 'Doe')],[new Table(1)])
         wedding.wildAssign()
         expect(wedding.people).toStrictEqual([])

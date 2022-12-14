@@ -1,4 +1,5 @@
 import Person from './Person'
+import Table from './Table'
 
 describe('Person', () => {
 	it('should return the full name', () => {
@@ -16,5 +17,11 @@ describe('Person', () => {
 		const woman = new Person('Jane', 'Doe')
         man.coupleWith(woman)
         expect(man.isCoupledWith(woman) && woman.isCoupledWith(man)).toBe(true)
+	})
+	it('should return true if person is assigned to table', () => {
+        const person = new Person('John', 'Doe')
+		const table = new Table(1)
+		person.assignTo(table)
+        expect(table.people).toStrictEqual([new Person('John', 'Doe')])
 	})
 })

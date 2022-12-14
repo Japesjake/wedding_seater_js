@@ -22,4 +22,8 @@ export default class Person {
 	isCoupledWith(person) {
 		return this.spouse === person
 	}
+
+	assignTo(table) {
+			return table.addPerson(this)
+	}
 }

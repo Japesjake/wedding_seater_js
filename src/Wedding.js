@@ -26,8 +26,9 @@ export default class Wedding {
     }
     wildAssign() {
         while (this.people != [] && !this.areFull()) {
-            for (let i = 0; i < this.tables.length; i++) {
-                let assigned = this.tables[i].addPerson(this.people[0])
+            for (let table of this.tables) {
+                let person = this.people[0]
+                let assigned = person.assignTo(table)
                 if (assigned) {
                     this.removePerson(0)
                 }
