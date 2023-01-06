@@ -26,12 +26,13 @@ export default class Wedding {
     }
     assignCouple(person, table) {
         for (let i = 0; i < this.people.length; i++) {
-            if (this.people[i].isCoupledWith(person)) {
+            let spouse = this.people[i]
+            if (spouse.isCoupledWith(person)) {
                 // checks to see if couple can be added to table without exceeding table size.
                 if (table.people.length < table.size - 1) {
                     // assignTo() returns true if person is sucessfully added to the table.
                     let assigned = person.assignTo(table)
-                    let assigned2 = this.people[i].assignTo(table)
+                    let assigned2 = spouse.assignTo(table)
                     // and if they are assigned
                     if (assigned && assigned2) {
                         this.removePersonById(i)
