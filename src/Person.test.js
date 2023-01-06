@@ -18,6 +18,7 @@ describe('Person', () => {
         man.coupleWith(woman)
         expect(man.isCoupledWith(woman)).toBe(true)
 		expect(woman.isCoupledWith(man)).toBe(true)
+		expect(man.isCoupledWith(man)).toBe(false)
 	})
 	it('should return true if person is assigned to table', () => {
         const person = new Person('John', 'Doe')

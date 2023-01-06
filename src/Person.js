@@ -24,6 +24,6 @@ export default class Person {
 	}
 
 	assignTo(table) {
-			return table.addPerson(this)
+		return table.addPerson(this)
 	}
 }

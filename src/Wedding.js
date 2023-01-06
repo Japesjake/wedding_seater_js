@@ -25,15 +25,18 @@ export default class Wedding {
         return true
     }
     assignCouple(person, table) {
-        for (let i = 0; i < this.people; i++) {
+        for (let i = 0; i < this.people.length; i++) {
             if (this.people[i].isCoupledWith(person)) {
-                let assigned = people[i].assignTo(table)
-                console.log(assigned)
-                let assigned2 = person.assignTo(table)
-                console.log(assigned2)
-                if (assigned && assigned2) {
-                    this.removePersonById(i)
-                    this.removePersonById(0)
+                // checks to see if couple can be added to table without exceeding table size.
+                if (table.people.length < table.size - 1) {
+                    // assignTo() returns true if person is sucessfully added to the table.
+                    let assigned = person.assignTo(table)
+                    let assigned2 = this.people[i].assignTo(table)
+                    // and if they are assigned
+                    if (assigned && assigned2) {
+                        this.removePersonById(i)
+                        this.removePersonById(0)
+                    }
                 }
             }
         }
@@ -45,11 +48,13 @@ export default class Wedding {
         }
     }
     wildAssign() {
-        // console.log(this.people)
-        while (this.people != [] && !this.areFull()) {
+        let person = true
+        // counter to break if while loop iterates too many times.
+        let count = 0
+        while (this.people.length != 0 && !this.areFull() && count != 50) {
+            count += 1
             for (let table of this.tables) {
                 let person = this.people[0]
-                // console.log('updated: ' + this.people)
                 if (person.isCoupled()) {
                     this.assignCouple(person, table)
                 } else {
@@ -57,5 +62,6 @@ export default class Wedding {
                 }
             }
         }
+        if (count === 50) {console.log('breaks after 50 runs.')}
     }
 }
