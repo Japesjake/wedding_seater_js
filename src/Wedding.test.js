@@ -43,11 +43,11 @@ describe('Wedding', () => {
         const woman = new Person('Jane', 'Doe')		
         const table = new Table(1)
         const table2 = new Table(2)
-        const wedding = new Wedding([man, woman],[table])
+        const wedding = new Wedding([man, woman],[table, table2])
         wedding.assignPerson(man, table2)
         expect(table2.people).toStrictEqual([man])
     })
-    it('should return true if couple is assigned to same table', () => {
+    it('should return true if couple is assigned together with assignCouple method', () => {
         const man = new Person('John', 'Doe')
         const woman = new Person('Jane', 'Doe')
         man.coupleWith(woman)

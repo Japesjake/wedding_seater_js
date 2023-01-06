@@ -1,7 +1,8 @@
 export default class Person {
-	constructor(firstName, lastName) {
+	constructor(firstName, lastName, id = Math.random(), hasSO = false) {
 		this.firstName = firstName
 		this.lastName = lastName
+		this.hasSO = hasSO
 	}
 
 	get fullName() {

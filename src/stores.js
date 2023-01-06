@@ -1,4 +1,5 @@
 import { writable } from 'svelte/store'
+import Person from './Person'
 
 function store (key, defaultValue) {
     if (!localStorage.getItem(key)) {
@@ -10,8 +11,7 @@ function store (key, defaultValue) {
     return write
 }
 
-let defaultValue = [{id: Math.random(), firstName: "Lucas", lastName: "Redlawski", hasSO: false, SO: {firstName: '', lastName: ''}, table: '', type: '', locked: false, party:"groom", assigned: false},
-                    {id: Math.random(), firstName: "James", lastName: "Showalter", hasSO: false, SO: {firstName: '', lastName: ''}, table: '', type: '', locked: false, party:"bride", assigned: false}];
+let defaultValue = [new Person('John', 'Doe'), new Person('Bob', 'Miller')];
 export const people = store("people", defaultValue)
 people.subscribe((value) => localStorage.people = JSON.stringify((value)))
 
