@@ -1,24 +1,24 @@
 <script>
     import App from '../App.svelte';
-	import { people } from '../stores';
+	import { wedding } from '../stores';
 
 	
     function addInput (id) {
-	let defaultPerson = {id: Math.random(), firstName: '', lastName: '', hasSO: false, table: null, SO: {firstName: '', lastName: ''}}
-    $people.splice(id + 1, 0, defaultPerson);
-    $people = $people;
+	let defaultPerson = new Person('', '')
+    $wedding.people.splice(id + 1, 0, defaultPerson);
+    $wedding = $wedding;
 	}
 	function removeInput (id) {
-			$people.splice(id,1)
-			$people = $people;
+			wedding.people.splice(id,1);
+			$wedding = $wedding;
 		}
 	function toggleSO (person){
 		person.hasSO = !person.hasSO;
-		$people = $people;
+		$wedding = $wedding;
 	}
 </script>
 
-{#each $people as person, id (person.id)}
+{#each $wedding.people as person, id (person.id)}
 <button tabindex = -1 on:click={removeInput(id)}>-</button>
 <button tabindex = -1 on:click={addInput(id)}>+</button>
 <input tabindex = 0 type="text" placeholder="firstname" bind:value={person.firstName}>
@@ -31,7 +31,7 @@ Who?
 <input type="text" placeholder="lastname" bind:value={person.SO.lastName}><br>
 {/if}
 {/each}
-<button on:click={addInput($people.length)}>+</button>
+<button on:click={addInput(wedding.people.length)}>+</button>
 <style>
 	input[type = "text"]{
 	text-align: left;

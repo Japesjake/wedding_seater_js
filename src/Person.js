@@ -3,6 +3,7 @@ export default class Person {
 		this.firstName = firstName
 		this.lastName = lastName
 		this.hasSO = hasSO
+		this.id = id
 	}
 
 	get fullName() {
