@@ -2,23 +2,17 @@
 	import People from './components/People.svelte'
 	import Max from './components/Max.svelte'
 	import Tables from './components/Tables.svelte'
-    class Thing {
-        constructor(name = "Joe") {
-        }    
-    }
-    let thing = new Thing()
-    console.log(thing.name)
 </script>
 
 <main>
 	<h1>Wedding Seater</h1>
 	<section class="indent-1">
 	<section>
-		<Max />
+		<!-- <Max /> -->
 		<People />
 	</section>
 	<section>
-		<Tables />
+		<!-- <Tables /> -->
 	</section>
 	</section>
 	

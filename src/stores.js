@@ -1,5 +1,6 @@
 import { writable } from 'svelte/store'
 import Person from './Person'
+import Wedding from './Wedding'
 
 function store (key, defaultValue) {
     if (!localStorage.getItem(key)) {
@@ -11,9 +12,9 @@ function store (key, defaultValue) {
     return write
 }
 
-let defaultValue = [new Person('John', 'Doe'), new Person('Bob', 'Miller')];
-export const people = store("people", defaultValue)
-people.subscribe((value) => localStorage.people = JSON.stringify((value)))
+let defaultValue = new Wedding([new Person('John', 'Doe'), new Person('Bob', 'Miller')]);
+export const wedding = store("wedding", defaultValue)
+wedding.subscribe((value) => localStorage.wedding = JSON.stringify((value)))
 
 let defaultMax = ""
 export const max = store("max", defaultMax)

@@ -1,5 +1,5 @@
 <script>
-import { people, max, tables } from '../stores.js'
+import { wedding, max, tables } from '../stores.js'
 
 function sum (array) {
     let total = 0
