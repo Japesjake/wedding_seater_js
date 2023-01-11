@@ -14,6 +14,7 @@
 		$wedding = $wedding;
 	}
 	function toggleSO (person){
+		person.coupleWith(new Person('', ''))
 		person.hasSO = !person.hasSO;
 		$wedding = $wedding;
 	}

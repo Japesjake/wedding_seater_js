@@ -24,7 +24,7 @@ describe('Person', () => {
         const person = new Person('John', 'Doe')
 		const table = new Table(1)
 		person.assignTo(table)
-        expect(table.people).toStrictEqual([new Person('John', 'Doe')])
+        expect(table.people).toStrictEqual([person])
 	})
 	it('should return true if person is coupled', () => {
 		const man = new Person('John', 'Doe') 

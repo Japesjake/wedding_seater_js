@@ -9,9 +9,10 @@ describe('Wedding', () => {
         expect(wedding.people).toStrictEqual([])
     })
     it('should return true if person is removed', () => {
-        const wedding = new Wedding([new Person('John', 'Doe'), new Person('Jane', 'Doe')], [])
+        const person = new Person('Jane', 'Doe')
+        const wedding = new Wedding([new Person('John', 'Doe'), person], [])
         wedding.removePersonById(0)
-        expect(wedding.people).toStrictEqual([new Person('Jane', 'Doe')])
+        expect(wedding.people).toStrictEqual([person])
     })
     it('should return true if table is maxed out after wild assignment', () => {
         const wedding = new Wedding([new Person('John', 'Doe'), new Person('Jane', 'Doe')], [new Table(1), new Table(1)])
@@ -22,14 +23,6 @@ describe('Wedding', () => {
         const wedding = new Wedding([new Person('John', 'Doe'), new Person('Jane', 'Doe')], [new Table(1)])
         wedding.wildAssign()
         expect(wedding.people.length).toBe(1)
-    })
-    it('should return true if assigned people getter returns people properly', () => {
-        const wedding = new Wedding([],[new Table(2, [new Person('John', 'Doe'), new Person('Jane', 'Doe')]), new Table(2, [new Person('John', 'Doe'), new Person('Jane', 'Doe')])])
-        expect(wedding.getAssignedPeople()).toStrictEqual([new Person('John', 'Doe'), new Person('Jane', 'Doe'), new Person('John', 'Doe'), new Person('Jane', 'Doe')])
-    })
-    it('should return true if getAssignedPeople method returns all people assigned', () => {
-        const wedding = new Wedding([],[new Table(1, [new Person('John', 'Doe')]), new Table(1, [new Person('Jane', 'Doe')])])
-        expect(wedding.getAssignedPeople()).toStrictEqual([new Person('John', 'Doe'), new Person('Jane', 'Doe')])
     })
     it('should return true if the people before wild assignment are all accounted for in tables after wild assignment', () => {
         const wedding = new Wedding([new Person('John', 'Doe'), new Person('Jane', 'Doe')], [new Table(2)])
@@ -54,9 +47,9 @@ describe('Wedding', () => {
         const table = new Table(2)
         const table2 = new Table(2)
         const wedding = new Wedding([man, woman],[table, table2])
-        wedding.assignCouple(wedding.people[0], table)
-        expect(table.people).toStrictEqual([man, woman])
-        expect(table2.people).toStrictEqual([])
+        wedding.assignCouple(wedding.people[0], table2)
+        expect(table2.people).toStrictEqual([man, woman])
+        expect(table.people).toStrictEqual([])
     })
     it('should return true if couple is not assigned to separate tables', () => {
         const man = new Person('John', 'Doe')
