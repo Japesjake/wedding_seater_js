@@ -57,6 +57,7 @@ export default class Wedding {
             for (let table of this.tables) {
                 let person = this.people[0]
                 if (person) {
+                    console.log(person)
                     if (person.isCoupled()) {
                         this.assignCouple(person, table)
                     } else {
