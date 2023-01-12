@@ -56,10 +56,12 @@ export default class Wedding {
             count += 1
             for (let table of this.tables) {
                 let person = this.people[0]
-                if (person.isCoupled()) {
-                    this.assignCouple(person, table)
-                } else {
-                    this.assignPerson(person, table)
+                if (person) {
+                    if (person.isCoupled()) {
+                        this.assignCouple(person, table)
+                    } else {
+                        this.assignPerson(person, table)
+                    }
                 }
             }
         }

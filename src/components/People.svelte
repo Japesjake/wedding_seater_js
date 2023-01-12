@@ -1,5 +1,4 @@
 <script>
-    import App from '../App.svelte';
 	import { wedding } from '../stores';
 	import Person from '../Person'
 
@@ -14,8 +13,13 @@
 		$wedding = $wedding;
 	}
 	function toggleSO (person){
-		person.coupleWith()
+		spouse = new Person('', '')
+		$wedding.add
+		person.coupleWith(new Person('', ''))
 		person.hasSO = !person.hasSO;
+		if (person.hasSO) {
+
+		}
 		$wedding = $wedding;
 	}
 </script>
@@ -26,7 +30,7 @@
 <input tabindex = 0 type="text" placeholder="firstname" bind:value={person.firstName}>
 <input tabindex = 0 type="text" placeholder="lastname" bind:value={person.lastName}>
 has SO?
-<input tabindex = -1 type="checkbox" on:click="{toggleSO(person)}" checked={person.hasSO}><br>
+<input tabindex = -1 type="checkbox" on:click={toggleSO(person)} checked={person.hasSO}><br>
 {#if person.hasSO}
 Who?
 <input type="text" placeholder="firstname" bind:value={person.SO.firstName}>
